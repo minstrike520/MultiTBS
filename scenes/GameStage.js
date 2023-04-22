@@ -1,4 +1,5 @@
-const minimalScroll = 1.3;
+const minimalZoom = 1.3;
+const zoomFactor = 0.001;
 const cursorScrollFactor = 5;
 const tileSize = 50;
 
@@ -60,11 +61,7 @@ class GameStage extends Phaser.Scene { //example
     {
         //this.map = this.add.image(0, 0, 'map').setOrigin(0).setScrollFactor(1);
 
-        this.txt = this.add.text(400,300, "Loading...", {font: "25px Arial", fill: "yellow"}).setScrollFactor(0);
-
         let posY = 0;
-
-        this.add.image(0,0,)
 
         this.tileMap = [];
 
@@ -103,46 +100,41 @@ class GameStage extends Phaser.Scene { //example
 
         this.cursors = this.input.keyboard.createCursorKeys();
         
+        this.inGameUI = {
+            objects: 
+            {
+                
+
+                txt: this.add.text(400,300, "Loading...", {font: "25px Arial", fill: "yellow"}).setScrollFactor(0)
+            },
+            scale: 1,
+            setScale(scale) 
+            {
+                this.scale = scale;
+                for (const [key, value] of Object.entries(this.objects)) 
+                {
+                    value.setScale(scale)
+                }
+            }
+        }
+        
         this.input.on('wheel', (pointer, gameObjects, deltaX, deltaY, deltaZ) =>
         {
-            if(this.cameras.main.zoom>=minimalScroll)
+            if(this.cameras.main.zoom>=minimalZoom || deltaY<0)
             {
-                this.cameras.main.setZoom(this.cameras.main.zoom - deltaY * 0.001);
+                let original = this.cameras.main.zoom;
+                
+                let zoom = this.cameras.main.zoom - deltaY * zoomFactor;
+
+                let multiplier = zoom/original;
+
+                this.cameras.main.setZoom(zoom);
+                
+                this.inGameUI.setScale(this.inGameUI.scale/multiplier);
             }
-            else if(deltaY<0) 
-            {
-                this.cameras.main.setZoom(this.cameras.main.zoom - deltaY * 0.001);
-            } 
         });
+
         console.log(this.map.displayWidth);
-    }
-    update_old ()
-    {
-        this.viewpoint.setVelocity(0);
-
-        if (this.cursors.left.isDown && this.viewpoint.x > 0)
-        {
-            this.viewpoint.setAngle(-90).setVelocityX(-200);
-        }
-        else if (this.cursors.right.isDown && this.viewpoint.x < this.map.displayWidth)
-        {
-            this.viewpoint.setAngle(90).setVelocityX(200);
-        }
-
-        if (this.cursors.up.isDown && this.viewpoint.y > 0)
-        {
-            this.viewpoint.setAngle(0).setVelocityY(-200);
-        }
-        else if (this.cursors.down.isDown && this.viewpoint.y < this.map.displayHeight)
-        {
-            this.viewpoint.setAngle(-180).setVelocityY(200);
-        }
-
-
-        
-        this.txt.setText(String(Math.floor(this.viewpoint.x) )+","+String(Math.floor(this.viewpoint.y) ))
-        //this.txt.setText(String(Math.floor(this.viewpoint.x) )+","+String(Math.floor(this.viewpoint.y) ))
-        console.log(this.cameras.main)
     }
     update ()
     {
