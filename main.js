@@ -6,8 +6,11 @@ var config = {
     physics: {
         default: 'arcade',
     },
+    dom: {
+        createContainer: true
+    },
     scene: [
-        GameStage,
+        ButtonTest, GameStage
     ]
   };
 

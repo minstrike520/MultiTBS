@@ -3,6 +3,24 @@
 //https://newdocs.phaser.io/docs/3.60.0/Phaser.GameObjects.GameObjectFactory
 
 /*
+    `preload`, `create`, `update` is called 
+        Phaser.Types.Scenes.Scene * Callback
+
+*/
+
+/*
+from https://www.thepolyglotdeveloper.com/2020/09/switch-between-scenes-phaser-game/
+https://phaser.discourse.group/t/adding-onclick-to-dom-element/4414
+function clickCallback() {
+            console.log(game.scene)
+            game.scene.start("gameStage");
+        }
+        this.testDOM.on("click", clickCallback)
+        
+*/
+
+
+/*
 this.cameras.main.startFollow(this.viewpoint, true);
 
 this.cameras.main.[
@@ -15,6 +33,8 @@ this.cameras.main.setBounds(0, 0, this.map.displayWidth, this.map.displayHeight,
 this.textrues.addCanvas('grass1', document.getTile("grass1"));
 
 object.setScale(1);
+
+this.add.dom()
 
 */
 

@@ -41,7 +41,7 @@ let tileMap = {
 class GameStage extends Phaser.Scene { //example
     constructor ()
     {
-        super();
+        super("gameStage");
     }
     preload ()
     {
@@ -107,6 +107,12 @@ class GameStage extends Phaser.Scene { //example
                 }
             }
         }
+
+        this.testDOM = this.add.dom(400,300,'div',
+        'background-color: lime; width: 220px; height: 100px; font: 48px Arial'
+        , 'text').setScrollFactor(1);
+
+        console.log(this.testDOM)
         
         this.cameras.main.setBounds(0, 0, this.map.displayWidth, this.map.displayHeight, 0);
 
