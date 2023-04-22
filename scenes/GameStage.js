@@ -93,7 +93,24 @@ class GameStage extends Phaser.Scene { //example
             
             displayHeight: tileMap.getMapSize()[1] * tileSize
         }
+        this.cameras.main.setBounds(0, 0, this.map.displayWidth, this.map.displayHeight, 0).setOrigin(0.5).setZoom(4);
 
+        this.cameras.main.getTopLeft = function () 
+        {
+            return [
+
+                this.scrollX-this.displayWidth/2+400,
+
+                this.scrollY-this.displayHeight/2+300
+        ]};
+        this.cameras.main.getBottomRight = function () 
+        {
+            return [
+
+                this.scrollX+this.displayWidth/2+400,
+
+                this.scrollY+this.displayHeight/2+300
+        ]};
         this.inGameUI = 
         {
             objects: 
@@ -125,28 +142,6 @@ class GameStage extends Phaser.Scene { //example
             }
         }.init();
         
-        this.cameras.main.setBounds(0, 0, this.map.displayWidth, this.map.displayHeight, 0);
-
-        this.cameras.main.setOrigin(0.5);
-
-        this.cameras.main.setZoom(4);
-
-        this.cameras.main.getTopLeft = function () 
-        {
-            return [
-
-                this.scrollX-this.displayWidth/2+400,
-
-                this.scrollY-this.displayHeight/2+300
-        ]};
-        this.cameras.main.getBottomRight = function () 
-        {
-            return [
-
-                this.scrollX+this.displayWidth/2+400,
-
-                this.scrollY+this.displayHeight/2+300
-        ]};
         this.cursors = this.input.keyboard.createCursorKeys();
         
         this.input.on('wheel', (pointer, gameObjects, deltaX, deltaY, deltaZ) =>
