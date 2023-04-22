@@ -92,19 +92,9 @@ class GameStage extends Phaser.Scene { //example
             displayHeight: tileMap.getMapSize()[1] * tileSize
         }
 
-        this.cameras.main.setBounds(0, 0, this.map.displayWidth, this.map.displayHeight, 0);
-
-        this.cameras.main.setOrigin(0.5);
-
-        this.cameras.main.setZoom(4);
-
-        this.cursors = this.input.keyboard.createCursorKeys();
-        
         this.inGameUI = {
             objects: 
             {
-                
-
                 txt: this.add.text(400,300, "Loading...", {font: "25px Arial", fill: "yellow"}).setScrollFactor(0)
             },
             scale: 1,
@@ -117,6 +107,14 @@ class GameStage extends Phaser.Scene { //example
                 }
             }
         }
+        
+        this.cameras.main.setBounds(0, 0, this.map.displayWidth, this.map.displayHeight, 0);
+
+        this.cameras.main.setOrigin(0.5);
+
+        this.cameras.main.setZoom(4);
+
+        this.cursors = this.input.keyboard.createCursorKeys();
         
         this.input.on('wheel', (pointer, gameObjects, deltaX, deltaY, deltaZ) =>
         {
