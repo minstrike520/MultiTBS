@@ -9,3 +9,5 @@
 (start)[https://newdocs.phaser.io/docs/3.60.0/Phaser.Scenes.SceneManager#start]
 
 (create callback)[https://newdocs.phaser.io/docs/3.60.0/Phaser.Types.Scenes.SceneCreateCallback]
+
+(setOrigin)[https://newdocs.phaser.io/docs/3.60.0/Phaser.GameObjects.Rectangle#setOrigin]

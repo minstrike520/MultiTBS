@@ -66,3 +66,8 @@ update_old ()
         console.log(this.cameras.main)
     }
 */
+/*
+            `scroll: ${Math.floor(cameraMain.scrollX)}, ${Math.floor(cameraMain.scrollY)} `,
+            `display(half): ${Math.floor(cameraMain.displayWidth/2)}, ${Math.floor(cameraMain.displayHeight/2)} `,
+
+*/
