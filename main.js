@@ -3,6 +3,13 @@ var config = {
     width: 800,
     height: 600,
     backgroundColor: 0x000050,
+    physics: {
+        default: 'arcade',
+    },
+    scene: [
+        GameStage,
+    ]
   };
 
-  var game = new Phaser.Game(config);
+document.var;
+document.game = new Phaser.Game(config);
