@@ -14,5 +14,7 @@ var config = {
     ]
   };
 
+import { GameStage } from "./scenes/GameStage/GameStage.js";
+
 document.var;
 document.game = new Phaser.Game(config);

@@ -35,10 +35,10 @@ let tileMap = {
         return [this.content[0].length, this.content.length]
     }
 
-}
+};
 
 
-class GameStage extends Phaser.Scene { //example
+export class GameStage extends Phaser.Scene { //example
     constructor ()
     {
         super("gameStage");
@@ -59,8 +59,6 @@ class GameStage extends Phaser.Scene { //example
     }
     create ()
     {
-        //this.map = this.add.image(0, 0, 'map').setOrigin(0).setScrollFactor(1);
-
         let posY = 0;
 
         this.tileMap = [];
