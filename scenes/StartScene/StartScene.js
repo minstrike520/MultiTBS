@@ -1,4 +1,4 @@
-class ButtonTest extends Phaser.Scene {
+export class StartScene extends Phaser.Scene {
     constructor() {
         super("custom-button")
     }
