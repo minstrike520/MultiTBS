@@ -7,23 +7,7 @@ export default function (game)
     tileMap.load(game);
     
     game.cameras.main.setZoom(2);
-
-    game.cameras.main.getTopLeft = function () 
-    {
-        return [
-
-            this.scrollX-this.displayWidth/2+400,
-
-            this.scrollY-this.displayHeight/2+300
-    ]};
-    game.cameras.main.getBottomRight = function () 
-    {
-        return [
-
-            this.scrollX+this.displayWidth/2+400,
-
-            this.scrollY+this.displayHeight/2+300
-    ]};
+    
     game.cameras.main.setScroll(game.cameras.main.displayWidth/2-400,game.cameras.main.displayHeight/2-300);
 
     game.txt = game.add.text(game.cameras.main.displayWidth,game.cameras.main.displayHeight, "Loading...", {font: "25px Arial", fill: "yellow"}).setScale(0.8).setOrigin(1,1);

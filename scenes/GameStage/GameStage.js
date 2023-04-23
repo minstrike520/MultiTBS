@@ -29,15 +29,13 @@ export class GameStage extends Phaser.Scene {
     {
         let cameraMain = this.cameras.main;
 
-        let topLeft = cameraMain.getTopLeft();
+        let bottomRight = [cameraMain.scrollX+cameraMain.displayWidth,cameraMain.scrollY+cameraMain.displayHeight]
 
-        let bottomRight = cameraMain.getBottomRight();
-
-        //this.inGameUI.setPosition(topLeft[0],topLeft[1]);
+        //this.inGameUI.setPosition(cameraMain.scrollX,cameraMain.scrollY);
 
         function cursorsBinding (game)
         {
-            if (game.cursors.left.isDown )//&& topLeft[0] > 0
+            if (game.cursors.left.isDown )//&& cameraMain.scrollX > 0
             {
                 cameraMain.scrollX -= cursorScrollFactor;
             }
@@ -57,7 +55,7 @@ export class GameStage extends Phaser.Scene {
 
         this.txt.setText(
         [
-            `TopLeft: ${Math.floor(topLeft[0])}, ${Math.floor(topLeft[1])}`,
+            `TopLeft: ${Math.floor(cameraMain.scrollX)}, ${Math.floor(cameraMain.scrollY)}`,
             
             `BottomRight: ${Math.floor(bottomRight[0])}, ${Math.floor(bottomRight[1])}`, 
         ])
