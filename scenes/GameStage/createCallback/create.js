@@ -1,5 +1,6 @@
 import tileMap from "../tileMap.js";
-import {tileSize, minimalZoom, zoomFactor} from "../configs.js";
+
+import wheelEventCallback from "../eventsCallback/wheelEventCallback.js";
 
 export default function (game) 
 {
@@ -43,23 +44,6 @@ export default function (game)
     
     game.cursors = game.input.keyboard.createCursorKeys();
     
-    game.input.on('wheel', (pointer, gameObjects, deltaX, deltaY, deltaZ) =>
-    {
-        if(game.cameras.main.zoom>=minimalZoom || deltaY<0)
-        {
-            let original = game.cameras.main.zoom;
-            
-            let zoom = game.cameras.main.zoom - deltaY * zoomFactor;
-
-            let multiplier = zoom/original;
-
-            game.cameras.main.setZoom(zoom);
-
-            game.inGameUI.setScale(game.inGameUI.scale/multiplier)
-
-            const fact = 0.03;
-
-            console.log(game.inGameUI.getBounds().x)
-        }
-    });
+    game.input.on('wheel', (pointer, gameObjects, deltaX, deltaY, deltaZ) => wheelEventCallback(game,deltaY)
+    );
 }
