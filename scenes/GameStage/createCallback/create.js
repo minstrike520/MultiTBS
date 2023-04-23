@@ -1,39 +1,10 @@
 import tileMap from "../tileMap.js";
 import {tileSize, minimalZoom, zoomFactor} from "../configs.js";
 
-export default function (game) {
-    let posY = 0;
-
-    game.tileMap = [];
-
-    for (let row of tileMap.content) 
-    {
-        game.tileMap[posY] = [];
-
-        let posX = 0;
-
-        for (let tileIndex of row) 
-        {
-            console.log(tileMap.fileName[tileIndex]);
-
-            let tile = game.add.image(posX*tileSize,posY*tileSize,tileMap.fileName[tileIndex]);
-
-            tile.setOrigin(0)
-
-            tile.setScale(50/tile.displayWidth);
-            
-            game.tileMap[posY][posX] = tile;
-
-            posX += 1;
-        }
-        posY += 1;
-    }
-    game.map = 
-    {
-        displayWidth: tileMap.getMapSize()[0] * tileSize,
-        
-        displayHeight: tileMap.getMapSize()[1] * tileSize
-    }
+export default function (game) 
+{
+    tileMap.load(game);
+    
     game.cameras.main.setZoom(2);
 
     game.cameras.main.getTopLeft = function () 

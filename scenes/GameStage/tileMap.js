@@ -1,4 +1,7 @@
-export default {
+import {tileSize} from "./configs.js";
+
+export default 
+{
     content: [
         [0,0,0,0,0,0,0,0,0,0,0,0],
         [0,0,1,1,0,0,0,0,0,0,0,0],
@@ -28,6 +31,41 @@ export default {
     },
     getMapSize() {
         return [this.content[0].length, this.content.length]
+    },
+    load (game) 
+    {
+        let posY = 0;
+
+        game.tileMap = [];
+
+        for (let row of this.content) 
+        {
+            game.tileMap[posY] = [];
+
+            let posX = 0;
+
+            for (let tileIndex of row) 
+            {
+                console.log(this.fileName[tileIndex]);
+
+                let tile = game.add.image(posX*tileSize,posY*tileSize,this.fileName[tileIndex]);
+
+                tile.setOrigin(0)
+
+                tile.setScale(50/tile.displayWidth);
+                
+                game.tileMap[posY][posX] = tile;
+
+                posX += 1;
+            }
+            posY += 1;
+        }
+        game.map = 
+        {
+            displayWidth: this.getMapSize()[0] * tileSize,
+            
+            displayHeight: this.getMapSize()[1] * tileSize
+        }
     }
 
 };
