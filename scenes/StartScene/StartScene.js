@@ -1,3 +1,5 @@
+import addButton from "../tools/addButton.js";
+
 export default class StartScene extends Phaser.Scene {
     constructor() {
         super("custom-button")
@@ -9,27 +11,38 @@ export default class StartScene extends Phaser.Scene {
 
     create() 
     {
-        let button = document.createElement("div");
+        let DOMContainer = document.getElementById("DOMContainer"); // the phaser's built-in container just don't f..ing work :(
 
-        button.className = "startButton";
-
-        document.getElementById("container") // the phaser's built-in container just don't f..ing work :(
-
-        .appendChild(button);
-        
-        this.testDOM = this.add.dom(400,300,button, 'background-color: lime; width: 220px; height: 110px; font-size: 72px', 'Start!');
-        
-        console.log(this.testDOM)
-
-        this.testDOM.addListener('click');
-        
         let game = this;
-        
-        function clickCallback() {
-            console.log(game.scene)
+
+        let buttonToGame = addButton(DOMContainer,this, 400, 300, `
+            background-color: lime; 
+            width: 220px; 
+            height: 110px; 
+            font-size: 72px`, 
+            'start!', 
+            function () 
+        {
             game.scene.start("gameStage");
-        }
-        this.testDOM.on("click", clickCallback)
+        });
+        let buttonToLab = addButton(DOMContainer,this, 400, 500, `
+            background-color: lime; 
+            width: 220px; 
+            height: 110px; 
+            font-size: 58px`, 
+            'Go to lab',
+            function()
+        {
+            game.scene.start("lab");
+        })
+        
+
+
+
+
+
+
+
     }
 
     update() {
