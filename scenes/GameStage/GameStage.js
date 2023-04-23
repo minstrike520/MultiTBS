@@ -8,18 +8,8 @@ export class GameStage extends Phaser.Scene {
         super("gameStage");
     }
     preload ()
-    {
-        //console.log(document.getTile("grass1"));
-        this.load.image('sprite1', 'assets/sprites/GreenSmile.png');
-
-        //this.load.image('map', 'assets/YamaBackground.png');
-        
-        for (let c = 0; c<tileMap.fileUrl.length;c++) 
-        {
-            console.log("asdf",tileMap.fileName[c]);
-
-            this.load.image(tileMap.fileName[c],tileMap.fileUrl[c]);
-        }
+    {        
+        tileMap.preload(this);
     }
     create ()
     {

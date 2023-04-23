@@ -66,6 +66,13 @@ export default
             
             displayHeight: this.getMapSize()[1] * tileSize
         }
+    },
+    preload (game) 
+    {
+        for (let c = 0; c<this.fileUrl.length;c++) 
+
+            game.load.image(this.fileName[c],this.fileUrl[c]);
+        
     }
 
 };
