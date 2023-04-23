@@ -93,7 +93,7 @@ class GameStage extends Phaser.Scene { //example
             
             displayHeight: tileMap.getMapSize()[1] * tileSize
         }
-        this.cameras.main.setBounds(0, 0, this.map.displayWidth, this.map.displayHeight, 0).setOrigin(0.5).setZoom(4);
+        this.cameras.main.setZoom(2);
 
         this.cameras.main.getTopLeft = function () 
         {
@@ -111,36 +111,26 @@ class GameStage extends Phaser.Scene { //example
 
                 this.scrollY+this.displayHeight/2+300
         ]};
-        this.inGameUI = 
-        {
-            objects: 
-            {
-                txt: this.add.text(400,300, "Loading...", {font: "25px Arial", fill: "yellow"}).setScale(0.8).setOrigin(0,1)
-                ,
-                rect1: this.add.rectangle(300,300,30,30, "blue").setDisplayOrigin(2,2)
-            },
-            scale: 0.3,
+        this.cameras.main.setScroll(this.cameras.main.displayWidth/2-400,this.cameras.main.displayHeight/2-300);
 
-            setScale(scale) 
-            {
-                console.log(this)
-                this.scale = scale;
-                for (const [key, value] of Object.entries(this.objects)) 
-                {
-                    value.setScale(scale)
-                }
-            },
-            init()
-            {
-                console.log("init")
-                for (const [key, value] of Object.entries(this.objects))
-                {
-                    value.setScrollFactor(1);
-                }
-                this.setScale(this.scale)
-                return this
-            }
-        }.init();
+        //this.cameras.main.setScroll(this.displayWidth/2-400,this.displayHeight/2-300)
+
+        this.txt = this.add.text(this.cameras.main.displayWidth,this.cameras.main.displayHeight, "Loading...", {font: "25px Arial", fill: "yellow"}).setScale(0.8).setOrigin(1,1);
+
+        this.rect1 = this.add.rectangle(0,0,30,30, "blue").setOrigin(0);
+
+        this.rect2 = this.add.rectangle(this.cameras.main.displayWidth,this.cameras.main.displayHeight,30,30, "blue").setOrigin(1);
+
+        //console.log(this.cameras.main.getTopLeft()[0],this.cameras.main.getTopLeft()[1])
+        this.cameras.main.setOrigin(0);
+
+        this.cameras.main.setScroll(0,0);
+
+        this.inGameUI = this.add.container(0,0, [
+
+            this.txt, this.rect2 ,this.rect1
+        ])
+        .setScrollFactor(0);
         
         this.cursors = this.input.keyboard.createCursorKeys();
         
@@ -155,12 +145,29 @@ class GameStage extends Phaser.Scene { //example
                 let multiplier = zoom/original;
 
                 this.cameras.main.setZoom(zoom);
-                
-                this.inGameUI.setScale(this.inGameUI.scale/multiplier);
+                /*
+                for (let i of this.inGameUI.list) 
+                {
+                    i.setScale(i.scale/multiplier);
+                }*/
+
+                //縮放位置在左上角，但是座標位置卻是在中間。
+
+                this.inGameUI.setScale(this.inGameUI.scale/multiplier)
+
+                const fact = 0.03;
+
+                console.log(this.inGameUI.getBounds().x)
+
+                //this.inGameUI.x -= deltaY*4*fact;
+
+                //this.inGameUI.y -= deltaY*3*fact;
+
+                //console.log("in wheel event: rect1.x = ",this.inGameUI.list[1].x)
+
+                //console.log("", this.inGameUI.x, this.inGameUI.y)
             }
         });
-
-        console.log(this.map.displayWidth);
     }
     update ()
     {
@@ -170,9 +177,7 @@ class GameStage extends Phaser.Scene { //example
 
         let bottomRight = cameraMain.getBottomRight();
 
-        this.inGameUI.objects.rect1.setPosition(topLeft[0],topLeft[1]);
-
-        this.inGameUI.objects.txt.setPosition(topLeft[0], bottomRight[1]);
+        //this.inGameUI.setPosition(topLeft[0],topLeft[1]);
 
         function cursorsBinding (game)
         {
@@ -194,13 +199,13 @@ class GameStage extends Phaser.Scene { //example
             }
         }; cursorsBinding(this);
 
-        this.inGameUI.objects.txt.setText(
+        this.txt.setText(
         [
             `TopLeft: ${Math.floor(topLeft[0])}, ${Math.floor(topLeft[1])}`,
             
             `BottomRight: ${Math.floor(bottomRight[0])}, ${Math.floor(bottomRight[1])}`, 
         ])
-        //console.log(cameraMain.scrollX+this.map.displayWidth/2+cameraMain.displayWidth/2)
+        //console.log(this.inGameUI.list[0].x, this.inGameUI.x)
     }
 }
 [
