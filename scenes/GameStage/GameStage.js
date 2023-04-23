@@ -2,7 +2,7 @@ import {cursorScrollFactor} from "./configs.js"
 import tileMap from "./tileMap.js";
 import create from "./createCallback/create.js";
 
-export class GameStage extends Phaser.Scene {
+export default class GameStage extends Phaser.Scene {
     constructor ()
     {
         super("gameStage");
