@@ -18,5 +18,4 @@ import GameStage from "./scenes/GameStage/GameStage.js";
 import StartScene from "./scenes/StartScene/StartScene.js";
 import Lab from "./scenes/Lab/Lab.js";
 
-document.var;
 document.game = new Phaser.Game(config);

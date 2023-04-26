@@ -10,7 +10,7 @@ export default function (node, game, x, y, style, text, callback)
 
     let dom = game.add.dom(x,y,button, style, text)
 
-    .addListener('click')    
+    .addListener('click')
     
     .on("click", callback);
 

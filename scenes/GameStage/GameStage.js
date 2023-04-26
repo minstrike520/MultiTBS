@@ -6,6 +6,8 @@ export default class GameStage extends Phaser.Scene {
     constructor ()
     {
         super("gameStage");
+
+        document.gamestage = this;
     }
     preload ()
     {
