@@ -11,17 +11,9 @@ export default class GameStage extends Phaser.Scene {
     }
     preload ()
     {
-        //console.log(document.getTile("grass1"));
         this.load.image('sprite1', 'assets/sprites/GreenSmile.png');
 
-        //this.load.image('map', 'assets/YamaBackground.png');
-
-        for (let c = 0; c<imgCorrs.prototype.fileUrl.length;c++) 
-        {
-            console.log("asdf",imgCorrs.prototype.fileName[c]);
-
-            this.load.image(imgCorrs.prototype.fileName[c],imgCorrs.prototype.fileUrl[c]);
-        }
+        imgCorrs.prototype.preloadAllInPhaser(this);
     }
     create ()
     {

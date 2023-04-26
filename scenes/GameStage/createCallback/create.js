@@ -2,7 +2,7 @@ import tileMap from "../content/map/tileMap.js";
 
 import wheelEventCallback from "../eventsCallback/wheelEventCallback.js";
 
-import ui from "./ui.js";
+import ui from "../content/ui/ui.js";
 
 export default function (game) 
 {

@@ -14,4 +14,10 @@ export default class {
         if (!index) throw new Error(`the name ${name} is not in the file list!`);
         return this.fileUrl[index]
     }
+    preloadAllInPhaser (game) {
+        for (let c = 0; c<this.fileUrl.length;c++) 
+        {//console.log("asdf",this.fileName[c]);
+            this.load.image(this.fileName[c],this.fileUrl[c]);
+        }
+    }
 }
