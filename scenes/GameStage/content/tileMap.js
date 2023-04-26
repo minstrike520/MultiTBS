@@ -1,4 +1,4 @@
-import {tileSize} from "./configs.js";
+import {tileSize} from "../configs.js";
 
 export default 
 {

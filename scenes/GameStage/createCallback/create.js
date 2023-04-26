@@ -1,4 +1,4 @@
-import tileMap from "../tileMap.js";
+import tileMap from "../content/tileMap.js";
 
 import wheelEventCallback from "../eventsCallback/wheelEventCallback.js";
 
