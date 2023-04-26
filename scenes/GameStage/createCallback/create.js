@@ -1,4 +1,4 @@
-import tileMap from "../content/tileMap.js";
+import tileMap from "../content/map/tileMap.js";
 
 import wheelEventCallback from "../eventsCallback/wheelEventCallback.js";
 
@@ -6,7 +6,7 @@ import ui from "./ui.js";
 
 export default function (game) 
 {
-    tileMap.load(game);
+    tileMap.renderInPhaser(game);
     
     game.cameras.main.setZoom(2).setOrigin(0);
 

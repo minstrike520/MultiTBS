@@ -1,5 +1,5 @@
 import {cursorScrollFactor} from "./configs.js"
-import tileMap from "./content/tileMap.js";
+import imgCorrs from "./content/map/imgCorrs.js";
 import create from "./createCallback/create.js";
 
 export default class GameStage extends Phaser.Scene {
@@ -15,12 +15,12 @@ export default class GameStage extends Phaser.Scene {
         this.load.image('sprite1', 'assets/sprites/GreenSmile.png');
 
         //this.load.image('map', 'assets/YamaBackground.png');
-        
-        for (let c = 0; c<tileMap.fileUrl.length;c++) 
-        {
-            console.log("asdf",tileMap.fileName[c]);
 
-            this.load.image(tileMap.fileName[c],tileMap.fileUrl[c]);
+        for (let c = 0; c<imgCorrs.prototype.fileUrl.length;c++) 
+        {
+            console.log("asdf",imgCorrs.prototype.fileName[c]);
+
+            this.load.image(imgCorrs.prototype.fileName[c],imgCorrs.prototype.fileUrl[c]);
         }
     }
     create ()
