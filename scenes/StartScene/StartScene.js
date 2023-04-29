@@ -26,19 +26,27 @@ export default class StartScene extends Phaser.Scene {
             font-size: 72px`,
             "start!",
             "click", function () {
+
+                console.log("why")
                 game.scene.start("gameStage");
             })
-        let buttonToLab = addDom(game, "button", 200, 300, `
+
+            let buttonToLab = addDom(game, "button", 200, 300, `
             background-color: lime; 
             width: 220px; 
             height: 110px; 
             font-size: 50px`, 
             'Go to lab',
-            "cilck",
-            function()
-        {
-            game.scene.start("lab");
-        })
+            "click", function () {
+                console.log("a");
+                game.scene.start("lab");
+            })
+
+
+
+
+
+
 
         let SendInput = new CustomEvent("send-input")
 
