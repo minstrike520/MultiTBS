@@ -1,6 +1,6 @@
 import {cursorScrollFactor} from "./configs.js"
 import imgCorrs from "./content/map/imgCorrs.js";
-import create from "./createCallback/create.js";
+import create from "./create.js";
 
 export default class GameStage extends Phaser.Scene {
     constructor ()

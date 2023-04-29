@@ -1,4 +1,4 @@
-import create from "./createCallback/create.js";
+import create from "./create.js";
 
 export default class Lab extends Phaser.Scene {
     constructor() {

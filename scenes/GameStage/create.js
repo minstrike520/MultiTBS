@@ -1,10 +1,10 @@
-import tileMap from "../content/map/tileMap.js";
+import tileMap from "./content/map/tileMap.js";
 
-import wheelEventCallback from "../eventsCallback/wheelEventCallback.js";
+import wheelEventCallback from "./eventsCallback/wheelEventCallback.js";
 
-import ui from "../content/ui/ui.js";
+import ui from "./content/ui/ui.js";
 
-import addPlayer from "../content/player/addPlayer.js";
+import addPlayer from "./content/player/addPlayer.js";
 
 export default function (game) 
 {
