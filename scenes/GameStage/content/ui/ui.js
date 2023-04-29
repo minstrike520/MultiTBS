@@ -10,7 +10,7 @@ export default function (game)
         
         {font: "25px Arial", fill: "yellow"} 
     )
-    .setScale(0.8)
+    .setScale(0.5)
     
     .setOrigin(1,1);
 
