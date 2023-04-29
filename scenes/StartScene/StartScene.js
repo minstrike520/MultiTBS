@@ -1,4 +1,4 @@
-import addButton from "../tools/addButton.js";
+import addButton from "../../domTools/objectAdder/addButton.js";
 
 let sio = io.connect("http://localhost:80/");
 
