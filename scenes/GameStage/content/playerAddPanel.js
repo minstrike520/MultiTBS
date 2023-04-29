@@ -53,10 +53,13 @@ export default function (game, playerList)
 
             return
         }
+        let playerIndex = playerList.ids.indexOf(id);
 
-        if (playerList.ids.indexOf("asdf")+1) 
+        if (playerIndex+1) 
         {
+            playerList.list[playerIndex].updateLocation(x,y);
 
+            return
         }
         panel.hintMsg.dom.innerText = ""
 

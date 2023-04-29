@@ -7,12 +7,17 @@ export class Player {
         this.container = container;
     }
     renderInPhaser (game) {
-        game.add.rectangle(
+        this.gameObject = game.add.rectangle(
             this.location[0]*tileSize,
             this.location[1]*tileSize,
             tileSize,tileSize, 0x00ff00
         ).setOrigin(0);
         return this
+    }
+    updateLocation(x,y) {
+        this.location = [x,y];
+        this.gameObject.x = x*tileSize;
+        this.gameObject.y = y*tileSize;
     }
 }
 
