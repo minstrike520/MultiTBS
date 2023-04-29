@@ -1,6 +1,6 @@
 import addButton from "../tools/addButton.js";
 
-let $ = io.connect("http://localhost:80/");
+let sio = io.connect("http://localhost:80/");
 
 export default class StartScene extends Phaser.Scene {
     constructor() {
@@ -8,9 +8,9 @@ export default class StartScene extends Phaser.Scene {
     }
 
     preload() {
-        $.emit("preload", "preload complete");
+        sio.emit("preload", "preload complete");
 
-        $.on("_connected", function(e){
+        sio.on("_connected", function(e){
             console.log(e)
         })
     }
