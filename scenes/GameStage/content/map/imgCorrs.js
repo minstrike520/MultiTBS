@@ -17,7 +17,7 @@ export default class {
     preloadAllInPhaser (game) {
         for (let c = 0; c<this.fileUrl.length;c++) 
         {//console.log("asdf",this.fileName[c]);
-            this.load.image(this.fileName[c],this.fileUrl[c]);
+            game.load.image(this.fileName[c],this.fileUrl[c]);
         }
     }
 }
