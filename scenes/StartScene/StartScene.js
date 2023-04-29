@@ -17,8 +17,6 @@ export default class StartScene extends Phaser.Scene {
 
     create() 
     {
-        let DOMContainer = document.getElementById("DOMContainer"); // the phaser's built-in container just don't f..ing work :(
-
         let game = this;
 
         let buttonToGame = addButton(DOMContainer,this, 400, 300, `
@@ -73,7 +71,6 @@ export default class StartScene extends Phaser.Scene {
             `   background-color: yellow;
                 width: 100px;
                 height: 100px;
-                placeholder: Input server url
             `,
         )
         .addListener('input')
