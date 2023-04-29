@@ -1,4 +1,4 @@
-import addButton from "../../domTools/objectAdder/addButton.js";
+import addDom from "../../domTools/addDomObject.js";
 
 let sio = io.connect("http://localhost:80/");
 
@@ -19,22 +19,22 @@ export default class StartScene extends Phaser.Scene {
     {
         let game = this;
 
-        let buttonToGame = addButton(DOMContainer,this, 400, 300, `
+        let buttonToGame = addDom(game, "button", 200, 150, `
             background-color: lime; 
             width: 220px; 
             height: 110px; 
-            font-size: 72px`, 
-            'start!', 
-            function () 
-        {
-            game.scene.start("gameStage");
-        });
-        let buttonToLab = addButton(DOMContainer,this, 400, 500, `
+            font-size: 72px`,
+            "start!",
+            "click", function () {
+                game.scene.start("gameStage");
+            })
+        let buttonToLab = addDom(game, "button", 200, 300, `
             background-color: lime; 
             width: 220px; 
             height: 110px; 
-            font-size: 58px`, 
+            font-size: 50px`, 
             'Go to lab',
+            "cilck",
             function()
         {
             game.scene.start("lab");
