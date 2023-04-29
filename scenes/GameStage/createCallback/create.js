@@ -4,7 +4,7 @@ import wheelEventCallback from "../eventsCallback/wheelEventCallback.js";
 
 import ui from "../content/ui/ui.js";
 
-import {Player} from "../content/player/PlayerContainer.js";
+import addPlayer from "../content/player/addPlayer.js";
 
 export default function (game) 
 {
@@ -16,17 +16,7 @@ export default function (game)
     
     game.cursors = game.input.keyboard.createCursorKeys();
 
-    function playerAdd () {
-
-        let p1 = new Player([0,0],"p1",undefined);
-        
-        console.log(p1)
-
-        p1.renderInPhaser(game);
-
-        
-
-    }playerAdd();
+    addPlayer(game);
 
 
     
