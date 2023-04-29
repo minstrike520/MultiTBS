@@ -6,6 +6,8 @@ import addUi from "./content/ui/ui.js";
 
 import addDebugPanel from "./content/playerAddPanel.js";
 
+import PlayerContainer from "./content/player/PlayerContainer.js";
+
 export default function (game) 
 {
     tileMap.renderInPhaser(game);
@@ -16,7 +18,7 @@ export default function (game)
 
     game.cursors = game.input.keyboard.createCursorKeys();
 
-    game.players = [];
+    game.players = new PlayerContainer(game);
     
     game.panel = addDebugPanel(game, game.players);
 

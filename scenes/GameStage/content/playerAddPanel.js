@@ -1,6 +1,6 @@
 import addDom from "../../../domTools/addDomObject.js";
 
-import addPlayer from "./player/addPlayer.js";
+import addPlayer from "./player/PlayerContainer.js";
 
 export default function (game, playerList) 
 {
@@ -39,7 +39,7 @@ export default function (game, playerList)
 
         let y = parseInt(panel.yPosInput.dom.value);
 
-        let name = panel.nameInput.dom.value;
+        let id = panel.nameInput.dom.value;
 
         panel.xPosInput.dom.value = "";
 
@@ -54,14 +54,13 @@ export default function (game, playerList)
             return
         }
 
-        if (playerList.indexOf()+1) 
+        if (playerList.ids.indexOf("asdf")+1) 
         {
 
         }
-
         panel.hintMsg.dom.innerText = ""
 
-        addPlayer(game, x, y, name)
+        playerList.append(x, y, id)
     })
     return game.add.container(0,0,Object.values(panel))
         

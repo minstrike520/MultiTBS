@@ -8,8 +8,8 @@ export class Player {
     }
     renderInPhaser (game) {
         game.add.rectangle(
-            this.location[0],
-            this.location[1],
+            this.location[0]*tileSize,
+            this.location[1]*tileSize,
             tileSize,tileSize, 0x00ff00
         ).setOrigin(0);
         return this
@@ -18,7 +18,20 @@ export class Player {
 
 
 export default class {
-    constructor (players) {
-        this.list = players;
+    constructor (game) 
+    {
+        this.game = game;
+
+        this.list = [];
+    }
+    get ids () 
+    {
+        if (!this.list) return [];
+
+        return this.list.map(p => p.id)
+    }
+    append (x, y, id) 
+    {
+        this.list.push(new Player([x,y], id, this).renderInPhaser(this.game));
     }
 }
