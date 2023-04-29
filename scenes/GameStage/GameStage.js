@@ -1,5 +1,5 @@
 import {cursorScrollFactor} from "./configs.js"
-import imgCorrs from "./content/map/imgCorrs.js";
+import tileMap from "./tileMap.js";
 import create from "./create.js";
 
 export default class GameStage extends Phaser.Scene {
@@ -12,8 +12,8 @@ export default class GameStage extends Phaser.Scene {
     preload ()
     {
         this.load.image('sprite1', 'assets/sprites/GreenSmile.png');
-
-        imgCorrs.prototype.preloadAllInPhaser(this);
+  
+        tileMap.preload(this);
     }
     create ()
     {
