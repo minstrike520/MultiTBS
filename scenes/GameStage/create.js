@@ -1,10 +1,10 @@
 import tileMap from "./content/map/tileMap.js";
 
-import wheelEventCallback from "./eventsCallback/wheelEventCallback.js";
+import zoomCamera from "./eventsCallback/zoomCamera.js";
 
-import ui from "./content/ui/ui.js";
+import addUi from "./content/ui/ui.js";
 
-import addPlayer from "./content/player/addPlayer.js";
+import addDebugPanel from "./content/playerAddPanel.js";
 
 export default function (game) 
 {
@@ -12,14 +12,19 @@ export default function (game)
     
     game.cameras.main.setZoom(2).setOrigin(0);
 
-    game.inGameUI = ui(game);
-    
+    game.inGameUI = addUi(game);
+
     game.cursors = game.input.keyboard.createCursorKeys();
 
-    addPlayer(game);
-
+    game.players = [];
+    
+    game.panel = addDebugPanel(game, game.players);
 
     
-    game.input.on('wheel', (pointer, gameObjects, deltaX, deltaY, deltaZ) => wheelEventCallback(game,deltaY)
+
+    game.nonScalable = [game.inGameUI, game.panel]
+
+    game.input.on('wheel', 
+    (pointer, gameObjects, deltaX, deltaY, deltaZ) => zoomCamera(game,deltaY,game.nonScalable)
     );
 }

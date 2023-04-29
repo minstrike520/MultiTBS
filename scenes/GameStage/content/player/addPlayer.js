@@ -1,8 +1,8 @@
 import {Player} from "../player/PlayerContainer.js";
 
-export default function (game) 
+export default function (game, x, y, name) 
 {
-    let p1 = new Player([0,0],"p1",undefined);
+    let p1 = new Player([x,y],name,undefined);
 
     p1.renderInPhaser(game);
 }
