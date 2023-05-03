@@ -1,8 +1,6 @@
 import addDom from "../../../domTools/addDomObject.js";
 
-import addPlayer from "./player/PlayerContainer.js";
-
-export default function (game, playerList) 
+export default function (game, spriteList) 
 {
     let panel = {
         xPosInput: addDom(game, "input", 0, 340,`
@@ -28,12 +26,12 @@ export default function (game, playerList)
         font-size: 15px`,
         "")
     }
-    panel.addPlayerButton = addDom(game, "button", 0, 300,`
+    panel.addSpriteButton = addDom(game, "button", 0, 300,`
     background-color: cyan; 
     width: 100px; 
     height: 30px; 
-    font-size: 15px`,
-    "add Player", "click", function() {
+    font-size: 12px`,
+    "(server) add sprite", "click", function() {
 
         let x = parseInt(panel.xPosInput.dom.value);
 
@@ -53,17 +51,17 @@ export default function (game, playerList)
 
             return
         }
-        let playerIndex = playerList.ids.indexOf(id);
+        let spriteIndex = spriteList.ids.indexOf(id);
 
-        if (playerIndex+1) 
+        if (spriteIndex+1) 
         {
-            playerList.list[playerIndex].updateLocation(x,y);
+            spriteList.list[spriteIndex].updateLocation(x,y);
 
             return
         }
         panel.hintMsg.dom.innerText = ""
 
-        playerList.append(x, y, id)
+        spriteList.append(x, y, id)
     })
     return game.add.container(0,0,Object.values(panel))
         

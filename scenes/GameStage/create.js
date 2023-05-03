@@ -4,9 +4,9 @@ import zoomCamera from "./eventsCallback/zoomCamera.js";
 
 import addUi from "./content/ui/ui.js";
 
-import addDebugPanel from "./content/playerAddPanel.js";
+import addDebugPanel from "./content/spriteAddPanel.js";
 
-import PlayerContainer from "./content/player/PlayerContainer.js";
+import SpriteContainer from "./content/sprite/SpriteContainer.js";
 
 export default function (game) 
 {
@@ -18,9 +18,9 @@ export default function (game)
 
     game.cursors = game.input.keyboard.createCursorKeys();
 
-    game.players = new PlayerContainer(game);
+    game.sprites = new SpriteContainer(game);
     
-    game.panel = addDebugPanel(game, game.players);
+    game.panel = addDebugPanel(game, game.sprites);
 
     
 

@@ -1,6 +1,6 @@
 import { tileSize } from "../../configs.js";
 
-export class Player {
+export class Sprite {
     constructor (location, id, container) {
         this.location = location;
         this.id = id;
@@ -37,6 +37,6 @@ export default class {
     }
     append (x, y, id) 
     {
-        this.list.push(new Player([x,y], id, this).renderInPhaser(this.game));
+        this.list.push(new Sprite([x,y], id, this).renderInPhaser(this.game));
     }
 }
