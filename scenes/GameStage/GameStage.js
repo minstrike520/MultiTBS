@@ -27,21 +27,21 @@ export default class GameStage extends Phaser.Scene {
 
         //this.inGameUI.setPosition(cameraMain.scrollX,cameraMain.scrollY);
 
-        function cursorsBinding (game)
+        function cursorsBinding (scene)
         {
-            if (game.cursors.left.isDown )//&& cameraMain.scrollX > 0
+            if (scene.cursors.left.isDown )//&& cameraMain.scrollX > 0
             {
                 cameraMain.scrollX -= cursorScrollFactor;
             }
-            else if (game.cursors.right.isDown)// && bottomRight[0] < game.map.displayWidth
+            else if (scene.cursors.right.isDown)// && bottomRight[0] < scene.map.displayWidth
             {
                 cameraMain.scrollX += cursorScrollFactor;
             }
-            if (game.cursors.up.isDown)
+            if (scene.cursors.up.isDown)
             {
                 cameraMain.scrollY -= cursorScrollFactor;
             }
-            else if (game.cursors.down.isDown)
+            else if (scene.cursors.down.isDown)
             {
                 cameraMain.scrollY += cursorScrollFactor;
             }

@@ -1,21 +1,21 @@
 import {minimalZoom, zoomFactor} from "../configs.js";
 
-export default function (game,deltaY, nonScalable) 
+export default function (scene,deltaY, nonScalable) 
 {
-    if (!(game.cameras.main.zoom>=minimalZoom || deltaY<0)) return;
+    if (!(scene.cameras.main.zoom>=minimalZoom || deltaY<0)) return;
 
-    let original = game.cameras.main.zoom;
+    let original = scene.cameras.main.zoom;
 
-    let zoom = game.cameras.main.zoom - deltaY * zoomFactor;
+    let zoom = scene.cameras.main.zoom - deltaY * zoomFactor;
     
     let multiplier = zoom/original;
     
-    game.cameras.main.setZoom(zoom);
+    scene.cameras.main.setZoom(zoom);
 
     for (let gameObject of nonScalable)
         
         gameObject.setScale(gameObject.scale/multiplier)
 
-    console.log(game.inGameUI.getBounds().x)
+    console.log(scene.inGameUI.getBounds().x)
     
 }

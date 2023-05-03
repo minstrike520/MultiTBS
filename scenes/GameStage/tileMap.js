@@ -32,15 +32,15 @@ export default
     getMapSize() {
         return [this.content[0].length, this.content.length]
     },
-    load (game) 
+    load (scene) 
     {
         let posY = 0;
 
-        game.tileMap = [];
+        scene.tileMap = [];
 
         for (let row of this.content) 
         {
-            game.tileMap[posY] = [];
+            scene.tileMap[posY] = [];
 
             let posX = 0;
 
@@ -48,30 +48,30 @@ export default
             {
                 console.log(this.fileName[tileIndex]);
 
-                let tile = game.add.image(posX*tileSize,posY*tileSize,this.fileName[tileIndex]);
+                let tile = scene.add.image(posX*tileSize,posY*tileSize,this.fileName[tileIndex]);
 
                 tile.setOrigin(0)
 
                 tile.setScale(50/tile.displayWidth);
                 
-                game.tileMap[posY][posX] = tile;
+                scene.tileMap[posY][posX] = tile;
 
                 posX += 1;
             }
             posY += 1;
         }
-        game.map = 
+        scene.map = 
         {
             displayWidth: this.getMapSize()[0] * tileSize,
             
             displayHeight: this.getMapSize()[1] * tileSize
         }
     },
-    preload (game) 
+    preload (scene) 
     {
         for (let c = 0; c<this.fileUrl.length;c++) 
 
-            game.load.image(this.fileName[c],this.fileUrl[c]);
+            scene.load.image(this.fileName[c],this.fileUrl[c]);
         
     }
 

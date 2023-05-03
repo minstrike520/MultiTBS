@@ -18,4 +18,6 @@ import GameStage from "./scenes/GameStage/GameStage.js";
 import StartScene from "./scenes/StartScene/StartScene.js";
 import Lab from "./scenes/Lab/Lab.js";
 
+console.log(io.connect("http://127.0.0.1:80"))
+
 document.game = new Phaser.Game(config);

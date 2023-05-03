@@ -1,10 +1,10 @@
-export default function (game) 
+export default function (scene) 
 {
-    let txt = game.add.text
+    let txt = scene.add.text
     (
-        game.cameras.main.displayWidth,
+        scene.cameras.main.displayWidth,
         
-        game.cameras.main.displayHeight, 
+        scene.cameras.main.displayHeight, 
         
         "Loading...", 
         
@@ -14,17 +14,17 @@ export default function (game)
     
     .setOrigin(1,1);
 
-    let rect1 = game.add.rectangle(0,0,30,2, "blue").setOrigin(0);
+    let rect1 = scene.add.rectangle(0,0,30,2, "blue").setOrigin(0);
 
-    let rect2 = game.add.rectangle(game.cameras.main.displayWidth,game.cameras.main.displayHeight,30,2, "blue").setOrigin(1);
+    let rect2 = scene.add.rectangle(scene.cameras.main.displayWidth,scene.cameras.main.displayHeight,30,2, "blue").setOrigin(1);
 
-    let inGameUI = game.add.container(0,0, [
+    let inGameUI = scene.add.container(0,0, [
 
         txt, rect2 ,rect1
     ])
     .setScrollFactor(0);
 
-    game.txt = txt;
+    scene.txt = txt;
 
     return inGameUI
 }

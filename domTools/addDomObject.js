@@ -1,10 +1,10 @@
 import DOMContainer from "./domContainerLocation.js";
 
-export default function (game, domType, x, y, style, text, listen, callback) 
+export default function (scene, domType, x, y, style, text, listen, callback) 
 {
     let dom = document.createElement(domType);
     
-    let e = game.add.dom(x,y,DOMContainer.appendChild(dom),style, text
+    let e = scene.add.dom(x,y,DOMContainer.appendChild(dom),style, text
     )
     .setOrigin(0);
 

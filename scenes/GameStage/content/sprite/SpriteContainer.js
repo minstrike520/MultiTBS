@@ -6,8 +6,8 @@ export class Sprite {
         this.id = id;
         this.container = container;
     }
-    renderInPhaser (game) {
-        this.gameObject = game.add.rectangle(
+    renderInPhaser (scene) {
+        this.gameObject = scene.add.rectangle(
             this.location[0]*tileSize,
             this.location[1]*tileSize,
             tileSize,tileSize, 0x00ff00
@@ -23,9 +23,9 @@ export class Sprite {
 
 
 export default class {
-    constructor (game) 
+    constructor (scene) 
     {
-        this.game = game;
+        this.scene = scene;
 
         this.list = [];
     }
@@ -37,6 +37,6 @@ export default class {
     }
     append (x, y, id) 
     {
-        this.list.push(new Sprite([x,y], id, this).renderInPhaser(this.game));
+        this.list.push(new Sprite([x,y], id, this).renderInPhaser(this.scene));
     }
 }

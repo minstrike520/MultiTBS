@@ -1,6 +1,6 @@
 import tileMap from "./content/map/tileMap.js";
 
-import zoomCamera from "./eventsCallback/zoomCamera.js";
+import zoomCamera from "./callbacks/zoomCamera.js";
 
 import addUi from "./content/ui/ui.js";
 
@@ -8,25 +8,25 @@ import addDebugPanel from "./content/spriteAddPanel.js";
 
 import SpriteContainer from "./content/sprite/SpriteContainer.js";
 
-export default function (game) 
+export default function (scene) 
 {
-    tileMap.renderInPhaser(game);
+    tileMap.renderInPhaser(scene);
     
-    game.cameras.main.setZoom(2).setOrigin(0);
+    scene.cameras.main.setZoom(2).setOrigin(0);
 
-    game.inGameUI = addUi(game);
+    scene.inGameUI = addUi(scene);
 
-    game.cursors = game.input.keyboard.createCursorKeys();
+    scene.cursors = scene.input.keyboard.createCursorKeys();
 
-    game.sprites = new SpriteContainer(game);
+    scene.sprites = new SpriteContainer(scene);
     
-    game.panel = addDebugPanel(game, game.sprites);
+    scene.panel = addDebugPanel(scene, scene.sprites);
 
     
 
-    game.nonScalable = [game.inGameUI, game.panel]
+    scene.nonScalable = [scene.inGameUI, scene.panel]
 
-    game.input.on('wheel', 
-    (pointer, gameObjects, deltaX, deltaY, deltaZ) => zoomCamera(game,deltaY,game.nonScalable)
+    scene.input.on('wheel', 
+    (pointer, gameObjects, deltaX, deltaY, deltaZ) => zoomCamera(scene,deltaY,scene.nonScalable)
     );
 }

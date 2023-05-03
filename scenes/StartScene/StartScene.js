@@ -17,9 +17,9 @@ export default class StartScene extends Phaser.Scene {
 
     create() 
     {
-        let game = this;
+        let scene = this;
 
-        let buttonToGame = addDom(game, "button", 200, 150, `
+        let buttonToGame = addDom(scene, "button", 200, 150, `
             background-color: lime; 
             width: 220px; 
             height: 110px; 
@@ -28,10 +28,10 @@ export default class StartScene extends Phaser.Scene {
             "click", function () {
 
                 console.log("why")
-                game.scene.start("gameStage");
+                scene.scene.start("gameStage");
             })
 
-            let buttonToLab = addDom(game, "button", 200, 300, `
+            let buttonToLab = addDom(scene, "button", 200, 300, `
             background-color: lime; 
             width: 220px; 
             height: 110px; 
@@ -39,7 +39,7 @@ export default class StartScene extends Phaser.Scene {
             'Go to lab',
             "click", function () {
                 console.log("a");
-                game.scene.start("lab");
+                scene.scene.start("lab");
             })
 
 
@@ -71,7 +71,7 @@ export default class StartScene extends Phaser.Scene {
         }
         
 
-        let serverUrlInput = game.add.dom(
+        let serverUrlInput = scene.add.dom(
             0,0,
             DOMContainer.appendChild(
                 inp

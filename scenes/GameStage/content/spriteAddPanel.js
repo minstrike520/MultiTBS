@@ -1,32 +1,32 @@
 import addDom from "../../../domTools/addDomObject.js";
 
-export default function (game, spriteList) 
+export default function (scene, spriteList) 
 {
     let panel = {
-        xPosInput: addDom(game, "input", 0, 340,`
+        xPosInput: addDom(scene, "input", 0, 340,`
         background-color: white; 
         width: 50px; 
         height: 30px; 
         font-size: 15px`,
         ""),
-        yPosInput: addDom(game, "input", 70, 340,`
+        yPosInput: addDom(scene, "input", 70, 340,`
         background-color: white; 
         width: 50px; 
         height: 30px; 
         font-size: 15px`,
         ""),
-        nameInput: addDom(game, "input", 150, 340,`
+        nameInput: addDom(scene, "input", 150, 340,`
         background-color: white; 
         width: 70px; 
         height: 30px; 
         font-size: 15px`,
         ""),
-        hintMsg: addDom(game, "div", 110, 300,`
+        hintMsg: addDom(scene, "div", 110, 300,`
 
         font-size: 15px`,
         "")
     }
-    panel.addSpriteButton = addDom(game, "button", 0, 300,`
+    panel.addSpriteButton = addDom(scene, "button", 0, 300,`
     background-color: cyan; 
     width: 100px; 
     height: 30px; 
@@ -63,7 +63,7 @@ export default function (game, spriteList)
 
         spriteList.append(x, y, id)
     })
-    return game.add.container(0,0,Object.values(panel))
+    return scene.add.container(0,0,Object.values(panel))
         
         .setScrollFactor(0);
 }
